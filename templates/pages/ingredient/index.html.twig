@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Ingrédient{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+il y'a {{ingredients.getTotalItemCount}} ingredients
+</div>
+<div class='container mt-4'>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prix</th>
+      <th scope="col">Date de Création </th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for ingredient in ingredients  %}
+  
+    <tr class="table-light">
+      <th scope="row">{{ingredient.id}}</th>
+      <td>{{ingredient.name}}</td>
+      <td>{{ingredient.price}}</td>
+      <td>{{ingredient.createdAt|date("d/m/Y")}}</td>
+    </tr>
+   {% endfor %}
+  </tbody>
+</table>
+<div class="d-flex justify-content-center">
+    {{ knp_pagination_render(ingredients) }}
+</div>
+</div>
+
+{% endblock %}
